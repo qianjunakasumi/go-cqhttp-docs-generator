@@ -17,5 +17,5 @@
 # go-cqhttp-docs-generator
 .idea
 .cache
-apis.yml
+apis/
 builds
