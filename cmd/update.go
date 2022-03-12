@@ -23,7 +23,7 @@ var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "更新 API 描述文件",
 	Long:  `更新 API 描述文件`,
-	Run:   run,
+	Run:   updateCmdRun,
 }
 
 func init() {
@@ -31,7 +31,7 @@ func init() {
 	updateCmd.Flags().String("mirror", "https://ghproxy.com/https://raw.githubusercontent.com/Mrs4s/go-cqhttp/dev/coolq/api.go", "源文件镜像")
 }
 
-func run(cmd *cobra.Command, args []string) {
+func updateCmdRun(cmd *cobra.Command, args []string) {
 	fmt.Println("开始更新 API... 正在下载中")
 	url, _ := cmd.Flags().GetString("mirror")
 	download(url)
