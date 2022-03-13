@@ -25,14 +25,14 @@ func NewDescriptionParser(d *steel.DescriptionDocument) *DescriptionGenerator {
 	return &DescriptionGenerator{source: d}
 }
 
-func (d *DescriptionGenerator) Build() {
+func (d *DescriptionGenerator) preBuild() {
 	d.Payload()
 	d.Response()
 }
 
-func (d *DescriptionGenerator) Print() string {
+func (d *DescriptionGenerator) Build() string {
 
-	d.Build()
+	d.preBuild()
 
 	format := new(strings.Builder)
 	format.Grow(len(d.payloadText) + len(d.responseText))
