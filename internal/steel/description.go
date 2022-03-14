@@ -19,6 +19,7 @@ type DescriptionMetadata struct {
 	Family           string                   `yaml:"family"`
 	Genus            string                   `yaml:"genus"`
 	Species          string                   `yaml:"species"`
+	SpeciesI18n      string                   `yaml:"speciesI18n"`
 	Annotations      []DescriptionAnnotations `yaml:"annotations"`
 	CommitId         string                   `yaml:"commitId"`
 	UpdateTimestamp  string                   `yaml:"updateTimestamp"`
