@@ -15,17 +15,15 @@ type DescriptionDocument struct {
 }
 
 type DescriptionMetadata struct {
-	AvailableVersion string                   `yaml:"availableVersion"`
-	Family           string                   `yaml:"family"`
-	Genus            string                   `yaml:"genus"`
-	Species          string                   `yaml:"species"`
-	SpeciesI18n      string                   `yaml:"speciesI18n"`
-	Annotations      []DescriptionAnnotations `yaml:"annotations"`
-	CommitId         string                   `yaml:"commitId"`
-	UpdateTimestamp  string                   `yaml:"updateTimestamp"`
+	AvailableVersion string        `yaml:"availableVersion"`
+	Family           string        `yaml:"family"`
+	Genus            string        `yaml:"genus"`
+	Species          string        `yaml:"species"`
+	SpeciesI18n      string        `yaml:"speciesI18n"`
+	Annotations      []Annotations `yaml:"annotations"`
+	CommitId         string        `yaml:"commitId"`
+	UpdateTimestamp  string        `yaml:"updateTimestamp"`
 }
-
-type DescriptionAnnotations map[string]string
 
 type DescriptionSpec struct {
 	Name struct {
@@ -35,14 +33,14 @@ type DescriptionSpec struct {
 	Description string `yaml:"description"`
 	Payload     struct {
 		Metadata struct {
-			Annotations []DescriptionAnnotations `yaml:"annotations"`
+			Annotations []Annotations `yaml:"annotations"`
 		} `yaml:"metadata"`
 		Spec []DescriptionPayload `yaml:"spec"`
 	}
 	PayloadExample string `yaml:"payloadExample"`
 	Response       struct {
 		Metadata struct {
-			Annotations []DescriptionAnnotations `yaml:"annotations"`
+			Annotations []Annotations `yaml:"annotations"`
 		} `yaml:"metadata"`
 		Spec []DescriptionResponse `yaml:"spec"`
 	} `yaml:"response"`
