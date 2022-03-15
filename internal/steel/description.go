@@ -26,33 +26,36 @@ type DescriptionMetadata struct {
 }
 
 type DescriptionSpec struct {
-	Name struct {
-		Spec string `yaml:"spec"`
-	} `yaml:"name"`
-	Endpoint    string `yaml:"endpoint"`
-	Description string `yaml:"description"`
-	Payload     struct {
-		Metadata struct {
-			Annotations []Annotations `yaml:"annotations"`
-		} `yaml:"metadata"`
-		Spec []DescriptionPayload `yaml:"spec"`
-	}
-	PayloadExample string `yaml:"payloadExample"`
-	Response       struct {
-		Metadata struct {
-			Annotations []Annotations `yaml:"annotations"`
-		} `yaml:"metadata"`
-		Spec []DescriptionResponse `yaml:"spec"`
-	} `yaml:"response"`
-	ResponseExample string `yaml:"responseExample"`
-	Extra           string `yaml:"extra"`
+	Name            DescriptionName     `yaml:"name"`
+	Endpoint        string              `yaml:"endpoint"`
+	Description     string              `yaml:"description"`
+	Payload         DescriptionPayload  `yaml:"payload"`
+	PayloadExample  string              `yaml:"payloadExample"`
+	Response        DescriptionResponse `yaml:"response"`
+	ResponseExample string              `yaml:"responseExample"`
+	Extra           string              `yaml:"extra"`
+}
+
+type DescriptionName struct {
+	Metadata struct {
+		AutoFill `yaml:"autoFill"`
+	} `yaml:"metadata"`
+	Spec string `yaml:"spec"`
 }
 
 type DescriptionPayload struct {
+	Metadata struct {
+		Annotations []Annotations `yaml:"annotations"`
+	} `yaml:"metadata"`
+	Spec []DescriptionPayloadSpec `yaml:"spec"`
+}
+
+type DescriptionPayloadSpec struct {
 	Name string `yaml:"name"`
 	Type struct {
 		Metadata struct {
-			Link string `yaml:"link"`
+			AutoFill `yaml:"autoFill"`
+			Link     string `yaml:"link"`
 		}
 		Spec string `yaml:"spec"`
 	} `yaml:"type"`
@@ -62,10 +65,18 @@ type DescriptionPayload struct {
 }
 
 type DescriptionResponse struct {
+	Metadata struct {
+		Annotations []Annotations `yaml:"annotations"`
+	} `yaml:"metadata"`
+	Spec []DescriptionResponseSpec `yaml:"spec"`
+}
+
+type DescriptionResponseSpec struct {
 	Name string `yaml:"name"`
 	Type struct {
 		Metadata struct {
-			Link string `yaml:"link"`
+			AutoFill `yaml:"autoFill"`
+			Link     string `yaml:"link"`
 		}
 		Spec string `yaml:"spec"`
 	}
